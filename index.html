@@ -23,7 +23,7 @@
       Właściwości funkcji:<br>
       
       <li>Dziedzina: \(x \in \mathbb{R}\)</li>
-      <li>Zbiór Wartości: \(x \in \mathbb{R}\)</li>
+      <li>Zbiór Wartości: \(y \in \mathbb{R}\)</li>
       <li>Miejsca zerowe: \(x = k\pi,k \in \mathbb{C}\)</li>
       <li>Punkt przecięcia z osią y: \((0, 0)\)</li>
       <li>Funkcja nie jest różnowartościowa</li>
@@ -47,7 +47,7 @@
   function plot() {
     functionPlot({
     target: '#myFunction',
-    width: vw(100)-vw(50),
+    width: vw(70),
     height: vh(100)-10,
     data: [{
       fn: 'x*sin(x)', 
@@ -57,9 +57,10 @@
    }],
     grid: true,
     yAxis: {label: 'y⠀', domain: [-5, 5]},
-    xAxis: {label: 'x⠀', domain: [-10*Math.PI, 10*Math.PI]}
+    xAxis: {label: 'x⠀', domain: [-vw(1)*Math.PI, vw(1)*Math.PI]}
   });
   }
+  addEventListener('resize', plot);
 </script>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=PT+Serif&display=swap');
@@ -95,16 +96,19 @@ footer {
   li {
     font-family: 'Roboto', sans-serif;
     color: #000000;
-    height: 1.6rem;
     margin-left: 30px;
+    margin-bottom: 1rem;
     list-style-type: upper-roman;
   }
   #plot {
-    width: 50%;
+    width: 70%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .top-right-legend {
+    display: none;
   }
 </style>
 </html>
