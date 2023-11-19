@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Plot :></title>
+  <meta charset="utf-8" />
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://mauriciopoppe.github.io/function-plot/js/function-plot.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.css"
+    integrity="sha384-ko6T2DjISesD0S+wOIeHKMyKsHvWpdQ1s/aiaQMbL+TIXx3jg6uyf9hlv3WWfwYv" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.js"
+    integrity="sha384-tsPOhveNsi36uhglzMBNOAA2xd7LlEqQuQHFKi4DwP+6UKrrLGub1MD77Zx18F8e"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body onload="plot();">
+  <section id="plot">
+    <div id="myFunction"></div>
+  </section>
+  <section id="text">
+    <h1>Funkcja \(f(x) = x\cdot\sin{x}\)</h1>
+
+    <p>
+      Własności funkcji:<br />
+
+      <li>Dziedzina: \(x \in \mathbb{R}\)</li>
+      <li>Zbiór Wartości: \(y \in \mathbb{R}\)</li>
+      <li>Miejsca zerowe: \(x = k\pi,k \in \mathbb{Z}\)</li>
+      <li>Punkt przecięcia z osią y: \((0, 0)\)</li>
+      <li>Funkcja nie jest różnowartościowa</li>
+      <li>Funkcja jest parzysta oraz nie jest nieparzysta</li>
+      <li>Funkcja nie jest monotoniczna</li>
+      <li>Funkcja jest ciągła</li>
+    </p>
+  </section>
+  <footer><span class="sign">Adam Gałęziewski @ kkav\\Kayen</span></footer>
+</body>
+<script>
+  function vh(percent) {
+    var h = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+    return (percent * h) / 100;
+  }
+
+  function vw(percent) {
+    var w = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    );
+    return (percent * w) / 100;
+  }
+  function plot() {
+    functionPlot({
+      target: "#myFunction",
+      width: vw(70),
+      height: vh(100) - 10,
+      data: [
+        {
+          fn: "x*sin(x)",
+          color: "purple",
+          sampler: "builtIn",
+          graphType: "polyline",
+        },
+      ],
+      grid: true,
+      yAxis: { label: "y⠀", domain: [-5, 5] },
+      xAxis: { label: "x⠀", domain: [-vw(1) * Math.PI, vw(1) * Math.PI] },
+    });
+  }
+  addEventListener("resize", plot);
+</script>
+<style>
+  @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&family=PT+Serif&display=swap");
+
+  .sign {
+    background: linear-gradient(to right,
+        #006eff,
+        #4c00ff);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  body {
+    background-color: #fff3e3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+  }
+
+  h1 {
+    font-family: "Roboto", sans-serif;
+    color: #000000;
+  }
+
+  footer {
+    font-family: "Roboto", sans-serif;
+    color: #000000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+  }
+
+  p {
+    font-family: "Roboto", sans-serif;
+    color: #000000;
+  }
+
+  li {
+    font-family: "Roboto", sans-serif;
+    color: #000000;
+    margin-left: 30px;
+    margin-bottom: 1rem;
+    list-style-type: upper-roman;
+  }
+
+  #plot {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .top-right-legend {
+    display: none;
+  }
+</style>
+
+</html>
